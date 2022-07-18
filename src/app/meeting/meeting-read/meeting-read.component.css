@@ -1,0 +1,52 @@
+.panel-body {
+  border-top: 1px solid var(--gray);
+  margin-top: 30px;
+}
+
+th {
+  color: var(--white);
+}
+
+thead {
+  background-color: var(--purple);
+}
+
+tbody, tbody tr td {
+  border: none !important;
+}
+
+.meeting-name {
+  font-weight: bold;
+}
+
+.meeting-name a {
+  text-decoration: none;
+  color: var(--purple) !important;
+}
+
+.meeting-name a:hover {
+  color: var(--darkblue) !important;
+}
+
+.add {
+  font-size: 3rem;
+  transition: 0.25s;
+}
+
+.add:hover {
+  color: var(--darkgreen) !important;
+}
+
+.center {
+  display: block;
+  position: sticky;
+  left: 50%;
+  right: 50%;
+}
+
+/* Medium and Small Sreens */
+@media (max-width: 992px) {
+  .actions-title, .actions-content {
+    display: none !important;
+  }
+}

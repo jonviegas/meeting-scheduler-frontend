@@ -1,0 +1,13 @@
+.card-title {
+  font-size: 5rem;
+  color: var(--darkblue);
+}
+
+.card-text {
+  font-weight: 500;
+}
+
+button {
+  margin: 15px 15px 0px 0px;
+  width: 90px;
+}

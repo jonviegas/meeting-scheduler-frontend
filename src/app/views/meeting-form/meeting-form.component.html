@@ -1,0 +1,108 @@
+<div class="card mb-3">
+
+  <!-- Header -->
+  <div class="card-header text-white">
+    <h2><i class="{{ icon }}"></i> Meeting {{ operation }}</h2>
+  </div>
+
+  <!-- Form -->
+  <div *ngIf="meeting" class="card-body">
+    <form [formGroup]="meetingForm" (ngSubmit)="send()">
+
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          formControlName="name"
+          [class.is-invalid]="isInvalid('name') && isTouched('name')"
+          type="text"
+          class="form-control text-secondary"
+          placeholder="Meeting subject"
+          id="name"
+          name="name"
+        />
+
+        <!-- Invalid Name Warning -->
+        <div *ngIf="isInvalid('name') && isTouched('name')" class="form-text">
+          <small class="invalid" *ngIf="hasError('name', 'minlength')">type a name with at least 4 characters</small>
+          <small class="invalid" *ngIf="hasError('name', 'maxlength')">name can't exceed 300 characters limit</small>
+          <small class="invalid" *ngIf="hasError('name', 'required')">name can't be empty</small>
+        </div>
+      </div>
+
+      <!-- Date -->
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input
+          formControlName="date"
+          [class.is-invalid]="isInvalid('date') && isTouched('date')"
+          placeholder="dd/mm/yyyy"
+          type="text"
+          class="form-control text-secondary"
+          id="date"
+          name="date"
+          mask="d0/M0/0000"
+          [specialCharacters]="['/']"
+          [dropSpecialCharacters]="false"
+        />
+
+        <!-- Invalid Date Warning -->
+        <div *ngIf="isInvalid('date') && isTouched('date')" class="form-text">
+          <small class="invalid" *ngIf="hasError('date', 'pattern')">enter a date with a valid format: dd/mm/yyyy</small>
+          <small class="invalid" *ngIf="hasError('date', 'required')">date can't be empty</small>
+        </div>
+      </div>
+
+      <!-- Start Hour -->
+      <div class="mb-3">
+        <label for="startHour" class="form-label">Start Hour</label>
+        <input
+          formControlName="startHour"
+          [class.is-invalid]="isInvalid('startHour') && isTouched('startHour')"
+          placeholder="hh:mm"
+          type="text"
+          class="form-control text-secondary"
+          id="startHour"
+          name="startHour"
+          mask="Hh:m0"
+          [specialCharacters]="[':']"
+          [dropSpecialCharacters]="false"
+        />
+
+        <!-- Invalid Start Hour Warning -->
+        <div *ngIf="isInvalid('startHour') && isTouched('startHour')" class="form-text">
+          <small class="invalid" *ngIf="hasError('startHour', 'pattern')">enter a hour with a valid format: hh:mm</small>
+          <small class="invalid" *ngIf="hasError('startHour', 'required')">start hour can't be empty</small>
+        </div>
+      </div>
+
+      <!-- End Hour -->
+      <div class="mb-3">
+        <label for="endHour" class="form-label">End Hour</label>
+        <input
+          formControlName="endHour"
+          [class.is-invalid]="isInvalid('endHour') && isTouched('endHour')"
+          placeholder="hh:mm"
+          type="text"
+          class="form-control text-secondary"
+          id="endHour"
+          name="endHour"
+          mask="Hh:m0"
+          [specialCharacters]="[':']"
+          [dropSpecialCharacters]="false"
+        />
+
+        <!-- Invalid End Hour Warning -->
+        <div *ngIf="isInvalid('endHour') && isTouched('endHour')" class="form-text">
+          <small class="invalid" *ngIf="hasError('endHour', 'pattern')">enter a hour with a valid format: hh:mm</small>
+          <small class="invalid" *ngIf="hasError('endHour', 'required')">end hour can't be empty</small>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <button [disabled]="meetingForm.invalid" type="submit" class="btn {{ btnColors[0] }}">{{ operation }}</button>
+      <button (click)="this.meetingService.navigateTo('/meetings')" class="btn {{ btnColors[1] }}">Return</button>
+    
+    </form>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.navbar {
+  background-color: var(--purple);
+  padding: 8px 16px;
+}
+
+.nav-item {
+  font-weight: bold;
+  color: var(--gray);
+  transition: 0.45s;
+}
+
+.nav-item:hover {
+  color: var(--white);
+  font-size: 1.05em;
+}
